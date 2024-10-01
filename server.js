@@ -1,17 +1,18 @@
+// Install express by running: npm install express
+
 const express = require('express');
-const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = 3000;
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static HTML file
+app.use(express.static('public'));  // Assuming the HTML file is in a folder called 'public'
 
-// Set up a route to serve the main page
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// API endpoint to send new text to the client
+app.get('/get-text', (req, res) => {
+    const newText = 'This is the updated text from the server!';
+    res.json({ newText });  // Send the new text as a JSON response
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });

@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Simple Website</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Example</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to My Website!</h1>
-    <p>This is a simple website running on a Node.js server.</p>
-    <!-- <p>This is being hosted publicly using NGrok.</p> -->
-  </div>
+    <p id="text">This is the original text.</p>
+    <button onclick="updateText()">Change Text</button>
+
+    <script>
+        function updateText() {
+            // This function will fetch updated text from the server
+            fetch('/get-text')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('text').innerText = data.newText;  // Update the <p> tag
+                })
+                .catch(error => console.log('Error:', error));
+        }
+    </script>
 </body>
 </html>
