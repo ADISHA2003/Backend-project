@@ -1,5 +1,3 @@
-// Install express by running: npm install express
-
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,6 +9,11 @@ app.use(express.static('public'));  // Assuming the HTML file is in a folder cal
 app.get('/get-text', (req, res) => {
     const newText = 'This is the updated text from the server!';
     res.json({ newText });  // Send the new text as a JSON response
+});
+
+// Add this route for the root path('/')
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.listen(PORT, () => {
