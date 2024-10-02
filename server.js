@@ -2,7 +2,7 @@
 
 const express = require('express');
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Serve static HTML file
 app.use(express.static('public'));  // Assuming the HTML file is in a folder called 'public'
@@ -13,6 +13,6 @@ app.get('/get-text', (req, res) => {
     res.json({ newText });  // Send the new text as a JSON response
 });
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
 });
