@@ -13,7 +13,7 @@ app.get('/get-text', (req, res) => {
 
 // Add this route for the root path('/')
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/index.html'); 
 });
 
 app.listen(PORT, () => {
