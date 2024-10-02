@@ -16,8 +16,9 @@
             fetch('/get-text')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('text').innerText = data.newText;  // Update the <p> tag
-                }, console.log("Text updated"))
+                    document.getElementById('text').innerText = data.newText;
+                    console.log("Text updated");
+                })
                 .catch(error => console.log('Error:', error));
         }
     </script>
